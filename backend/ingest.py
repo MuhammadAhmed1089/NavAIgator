@@ -32,6 +32,15 @@ def load_manifest() -> pd.DataFrame:
     return df
 
 
+# Per organizer update: scraped texts do NOT count toward the citation metric.
+# Only rules backed by these official distributed corpus docs are submittable.
+SCRAPED_DOC_IDS = {
+    'D015', 'D017', 'D028', 'D037', 'D044',
+    'D054', 'D055', 'D059', 'D060', 'D074',
+    'D075', 'D077', 'D086', 'D087'
+}
+
+
 def load_documents(manifest: pd.DataFrame) -> list[dict]:
     """
     For each row in the manifest that has a local text file,
@@ -59,6 +68,12 @@ def load_documents(manifest: pd.DataFrame) -> list[dict]:
         if status in ("link-only",) or capture != "yes" or not text_file_rel or text_file_rel == "nan":
             skipped += 1
             logger.info(f"Skipping {doc_id} (status='{status}', capture='{capture}'): no local text.")
+            continue
+
+        # Skip scraped docs — not citable per organizer update
+        if doc_id in SCRAPED_DOC_IDS:
+            skipped += 1
+            logger.info(f"Skipping {doc_id}: scraped (non-citable per organizer rules).")
             continue
 
         # Use the text_file column directly — it gives the relative path from corpus dir
