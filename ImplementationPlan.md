@@ -68,10 +68,11 @@ To satisfy the strict "Responsible AI by Design" rubric:
     *   Display beautiful cards for each rule category with plain-language explanations.
     *   Implement UI toggles for language translations (English/Spanish).
     *   Visually surface confidence scores, exact citations, and conflict flags.
+    *   **Audit View (Stretch Goal):** Implement a dedicated UI modal showing the LLM reasoning boundary, `quoted_span`, `retrieval_date`, and `as_of` date for every single answer to guarantee traceability.
     *   **Live Extension (Stretch Goal):** Ensure the architecture allows extending to one new jurisdiction live during the demo event.
 
 ### Phase 5: Deployment & Polish (Hours 22-24)
 *   Migrate the `.env` database connection from SQLite to a cloud PostgreSQL instance (e.g., Supabase, Neon).
 *   Deploy FastAPI backend (e.g., Render, Heroku).
 *   Deploy React frontend (e.g., Vercel, Netlify).
-*   **Deliverables:** Record the mandatory team, demo, and technical videos (demonstrating our internal testing score equivalent). Push all code to the GitHub repository with a README, and prepare the live demo link.
+*   **Deliverables:** Record the mandatory team, demo, and technical videos (demonstrating our internal testing score equivalent). Draft the required **one-page method note** detailing our extraction pipeline and Responsible AI guardrails. Push all code to the GitHub repository with a README, and prepare the live demo link.
