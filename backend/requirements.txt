@@ -1,0 +1,12 @@
+pandas
+pydantic
+groq
+langchain
+sqlalchemy
+fastapi
+uvicorn
+python-dotenv
+psycopg2-binary
+jsonschema
+requests
+

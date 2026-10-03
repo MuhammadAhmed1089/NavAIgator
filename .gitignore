@@ -3,3 +3,11 @@
 CLAUDE.md
 claude-notes/
 .claude/
+/backend/.env
+# Python environment
+backend/venv/
+backend/.env
+__pycache__/
+*.pyc
+*.db
+audit.log
