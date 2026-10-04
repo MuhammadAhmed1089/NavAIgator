@@ -26,3 +26,4 @@ EXPOSE 8000
 # We need the backend to serve the frontend dist folder
 # But for simplicity if using a start.sh we could run two processes, 
 # or just tell FastAPI to serve the frontend.
+CMD ["python", "/app/backend/app.py"]
