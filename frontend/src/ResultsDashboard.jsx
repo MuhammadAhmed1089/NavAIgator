@@ -8,7 +8,7 @@ import {
 import UpcomingChangesMap from './UpcomingChangesMap';
 import './ResultsDashboard.css';
 
-const API = import.meta.env.PROD ? '/api' : 'http://127.0.0.1:8000/api';
+const API = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000/api';
 
 /* ─── Helpers ──────────────────────────────────────────────── */
 const getStatusMeta = (s, isSpanish) => {
