@@ -10,24 +10,36 @@ import './ResultsDashboard.css';
 const API = 'http://127.0.0.1:8000/api';
 
 /* ─── Helpers ──────────────────────────────────────────────── */
-const STATUS_META = {
-  applies:           { label: 'Applies',     icon: CheckCircle,    cls: 'applies',  summary: 'green' },
-  exempt:            { label: 'Exempt',      icon: Shield,         cls: 'exempt',   summary: 'red'   },
-  unknown:           { label: 'Unknown',     icon: HelpCircle,     cls: 'unknown',  summary: 'yellow'},
-  not_yet_effective: { label: 'Upcoming',    icon: Clock,          cls: 'pending',  summary: 'gray'  },
-  not_applicable:    { label: 'N/A',         icon: Shield,         cls: 'exempt',   summary: 'red'   },
+const getStatusMeta = (s, isSpanish) => {
+  const META = {
+    applies:           { label: isSpanish ? 'Aplica' : 'Applies',     icon: CheckCircle,    cls: 'applies',  summary: 'green' },
+    exempt:            { label: isSpanish ? 'Exento' : 'Exempt',      icon: Shield,         cls: 'exempt',   summary: 'red'   },
+    unknown:           { label: isSpanish ? 'Desconocido' : 'Unknown', icon: HelpCircle,    cls: 'unknown',  summary: 'yellow'},
+    not_yet_effective: { label: isSpanish ? 'Pendiente' : 'Upcoming', icon: Clock,          cls: 'pending',  summary: 'gray'  },
+    not_applicable:    { label: isSpanish ? 'N/A' : 'N/A',            icon: Shield,         cls: 'exempt',   summary: 'red'   },
+  };
+  return META[s] || META.applies;
 };
-const getStatus = (s) => STATUS_META[s] || STATUS_META.applies;
 
-const CATEGORY_LABELS = {
-  rent_increase_limits:      'Rent Increase Limits',
-  just_cause_eviction:       'Just Cause for Eviction',
-  relocation_assistance:     'Relocation Assistance',
-  notice_requirements:       'Notice Requirements',
-  security_deposits:         'Security Deposits',
-  habitability:              'Habitability Standards',
-  anti_harassment:           'Anti-Harassment',
-  other:                     'Other Protections',
+const getCategoryLabel = (cat, isSpanish) => {
+  const LABELS = {
+    rent_increase_limits:      isSpanish ? 'Límites de Aumento de Renta' : 'Rent Increase Limits',
+    just_cause_eviction:       isSpanish ? 'Causa Justa para Desalojo' : 'Just Cause for Eviction',
+    relocation_assistance:     isSpanish ? 'Asistencia de Reubicación' : 'Relocation Assistance',
+    notice_requirements:       isSpanish ? 'Requisitos de Notificación' : 'Notice Requirements',
+    security_deposits:         isSpanish ? 'Depósitos de Seguridad' : 'Security Deposits',
+    habitability:              isSpanish ? 'Estándares de Habitabilidad' : 'Habitability Standards',
+    anti_harassment:           isSpanish ? 'Anti-Acoso' : 'Anti-Harassment',
+    other:                     isSpanish ? 'Otras Protecciones' : 'Other Protections',
+  };
+  return LABELS[cat] || cat.replace(/_/g,' ');
+};
+
+const translateSystemText = (text, isSpanish) => {
+  if (!isSpanish || !text) return text;
+  if (text.includes("Superseded: A local city rule governs")) return "Sustituido: Una regla local rige sobre esta regla estatal porque las ordenanzas locales suelen ser más estrictas. La regla más estricta gana.";
+  if (text.includes("Building satisfies known coverage conditions")) return "El edificio cumple con las condiciones de cobertura conocidas.";
+  return text;
 };
 
 const CHANGES_MOCK = [
@@ -40,9 +52,24 @@ const CHANGES_MOCK = [
 
 /* ─── Audit Modal ───────────────────────────────────────────── */
 function AuditModal({ rule, onClose, isSpanish }) {
-  const meta = getStatus(rule.status);
+  const meta = getStatusMeta(rule.status, isSpanish);
   const StatusIcon = meta.icon;
   const r = rule.rule;
+  const [translatedReq, setTranslatedReq] = useState('');
+
+  useEffect(() => {
+    if (isSpanish && !translatedReq) {
+      setTranslatedReq('Traduciendo al español...');
+      fetch(`${API}/translate`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text: r.requirement })
+      })
+      .then(res => res.json())
+      .then(data => setTranslatedReq(data.spanish_text))
+      .catch(err => setTranslatedReq('Error en la traducción.'));
+    }
+  }, [isSpanish, r.requirement]);
 
   return (
     <AnimatePresence>
@@ -60,50 +87,52 @@ function AuditModal({ rule, onClose, isSpanish }) {
             <span className={`rule-status-badge ${meta.cls}`}>
               <StatusIcon size={11} /> {meta.label}
             </span>
-            {r.level && <span style={{ fontSize:11, color:'rgba(255,255,255,0.35)', fontWeight:700 }}>{r.level.toUpperCase()}</span>}
+            {r.level && <span style={{ fontSize:11, color:'rgba(0,0,0,0.35)', fontWeight:800 }}>{r.level.toUpperCase()}</span>}
           </div>
 
           <div className="modal-title">{r.title}</div>
           {r.key_value && <div className="modal-key-value">{r.key_value}</div>}
 
-          <div className="modal-section-label">Requirement</div>
-          <div className="modal-requirement">{r.requirement}</div>
+          <div className="modal-section-label">{isSpanish ? 'Requisito' : 'Requirement'}</div>
+          <div className="modal-requirement">{isSpanish ? translatedReq : r.requirement}</div>
 
           {r.quoted_span && <>
-            <div className="modal-section-label">Exact Source Text</div>
+            <div className="modal-section-label">{isSpanish ? 'Texto Fuente Exacto' : 'Exact Source Text'}</div>
             <div className="modal-quote">{r.quoted_span}</div>
           </>}
 
-          <div className="modal-section-label">Engine Verdict</div>
+          <div className="modal-section-label">{isSpanish ? 'Veredicto del Motor' : 'Engine Verdict'}</div>
           <div className="modal-reason">{rule.reason}</div>
 
           {r.coverage_conditions && <>
-            <div className="modal-section-label">Coverage Conditions</div>
+            <div className="modal-section-label">{isSpanish ? 'Condiciones de Cobertura' : 'Coverage Conditions'}</div>
             <div className="modal-reason">{r.coverage_conditions}</div>
           </>}
 
           {r.exemptions && <>
-            <div className="modal-section-label">Exemptions</div>
+            <div className="modal-section-label">{isSpanish ? 'Exenciones' : 'Exemptions'}</div>
             <div className="modal-reason">{r.exemptions}</div>
           </>}
 
           {rule.conflict_flag && rule.conflict_note && <>
-            <div className="modal-section-label">⚠ Conflict Note</div>
+            <div className="modal-section-label">{isSpanish ? '⚠ Nota de Conflicto' : '⚠ Conflict Note'}</div>
             <div className="modal-conflict-box">{rule.conflict_note}</div>
           </>}
 
-          <div className="modal-section-label">Citation &amp; Source</div>
-          <div style={{ fontSize:13, color:'rgba(255,255,255,0.55)', marginBottom:6 }}>{r.citation}</div>
+          <div className="modal-section-label">{isSpanish ? 'Citación y Fuente' : 'Citation & Source'}</div>
+          <div style={{ fontSize:13, color:'#9ca3af', marginBottom:6, fontWeight:600 }}>{r.citation}</div>
           {r.source_url && (
             <a className="modal-source-link" href={r.source_url} target="_blank" rel="noopener noreferrer">
-              <ExternalLink size={13} /> View Original Source
+              <ExternalLink size={13} /> {isSpanish ? 'Ver Fuente Original' : 'View Original Source'}
             </a>
           )}
 
           <div className="modal-legal-footer">
             <Shield size={13} style={{ color:'#00D4AA', flexShrink:0 }} />
             <span>
-              Informational only — not legal advice. Every verdict cites the source text and separates enacted from pending law.
+              {isSpanish 
+                ? 'Solo informativo — no es asesoría legal. Cada veredicto cita el texto fuente y separa la ley promulgada de la pendiente.'
+                : 'Informational only — not legal advice. Every verdict cites the source text and separates enacted from pending law.'}
             </span>
           </div>
         </motion.div>
@@ -113,10 +142,49 @@ function AuditModal({ rule, onClose, isSpanish }) {
 }
 
 /* ─── Rule Card ─────────────────────────────────────────────── */
-function RuleCard({ item, onClick }) {
-  const meta = getStatus(item.status);
+function RuleCard({ item, onClick, isSpanish }) {
+  const meta = getStatusMeta(item.status, isSpanish);
   const StatusIcon = meta.icon;
   const r = item.rule;
+
+  const [tTitle, setTTitle] = useState('');
+  const [tReq, setTReq] = useState('');
+
+  useEffect(() => {
+    if (isSpanish && !tTitle) {
+      setTTitle('Traduciendo...');
+      setTReq('Traduciendo requerimiento con IA...');
+      
+      const textToTranslate = `Título: ${r.title}\n\nRequisito: ${r.requirement}`;
+      
+      fetch(`${API}/translate`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text: textToTranslate })
+      })
+      .then(res => res.json())
+      .then(data => {
+        const span = data.spanish_text || '';
+        if (span.toLowerCase().includes('requisito:')) {
+          const parts = span.split(/requisito:/i);
+          setTTitle(parts[0].replace(/título:/i, '').trim());
+          setTReq(parts[1].trim());
+        } else {
+          setTTitle(r.title); // fallback
+          setTReq(span);
+        }
+      })
+      .catch(err => {
+        setTTitle(r.title);
+        setTReq(r.requirement);
+      });
+    }
+  }, [isSpanish, r.title, r.requirement, tTitle]);
+
+  const displayTitle = isSpanish ? (tTitle || r.title) : r.title;
+  const displayReq   = isSpanish ? (tReq || r.requirement) : r.requirement;
+  const displayConflict = translateSystemText(item.conflict_note, isSpanish);
+  const displayReason   = translateSystemText(item.reason, isSpanish);
 
   return (
     <motion.div
@@ -128,7 +196,7 @@ function RuleCard({ item, onClick }) {
       layout
     >
       <div className="rule-card-header">
-        <div className="rule-title">{r.title}</div>
+        <div className="rule-title">{displayTitle}</div>
         <span className={`rule-status-badge ${meta.cls}`}>
           <StatusIcon size={10} /> {meta.label}
         </span>
@@ -136,23 +204,23 @@ function RuleCard({ item, onClick }) {
 
       {r.key_value && <div className="rule-key-value">{r.key_value}</div>}
 
-      <div className="rule-requirement">{r.requirement}</div>
+      <div className="rule-requirement">{displayReq}</div>
 
-      {item.status === 'unknown' && item.reason && (
-        <div className="rule-unknown-prompt">⚠ {item.reason}</div>
+      {item.status === 'unknown' && displayReason && (
+        <div className="rule-unknown-prompt">⚠ {displayReason}</div>
       )}
 
-      {item.conflict_flag && item.conflict_note && (
+      {item.conflict_flag && displayConflict && (
         <div className="conflict-banner">
-          <AlertTriangle size={13} style={{ color:'#f87171', flexShrink:0, marginTop:1 }} />
-          <div className="conflict-banner-text">{item.conflict_note}</div>
+          <AlertTriangle size={13} style={{ color:'#dc2626', flexShrink:0, marginTop:1 }} />
+          <div className="conflict-banner-text">{displayConflict}</div>
         </div>
       )}
 
       <div className="rule-card-footer">
         <span className="rule-citation">{r.citation}</span>
         <button className="rule-source-btn" onClick={e => { e.stopPropagation(); onClick(item); }}>
-          Audit trace <ChevronRight size={11} />
+          {isSpanish ? 'Trazabilidad' : 'Audit trace'} <ChevronRight size={11} />
         </button>
       </div>
     </motion.div>
@@ -160,13 +228,14 @@ function RuleCard({ item, onClick }) {
 }
 
 /* ─── Changes View ──────────────────────────────────────────── */
-function ChangesView({ asOfDate }) {
+function ChangesView({ asOfDate, isSpanish }) {
   return (
     <div className="changes-container">
-      <div className="changes-title">Upcoming & Recent Law Changes</div>
+      <div className="changes-title">{isSpanish ? 'Cambios de Ley Próximos y Recientes' : 'Upcoming & Recent Law Changes'}</div>
       <div className="changes-subtitle">
-        Enacted laws and pending proposals across all 9 cities — as of {asOfDate}.
-        Pending items are not yet law and are flagged clearly.
+        {isSpanish 
+          ? `Leyes promulgadas y propuestas pendientes en 9 ciudades — a partir del ${asOfDate}. Los elementos pendientes aún no son ley y se indican claramente.`
+          : `Enacted laws and pending proposals across all 9 cities — as of ${asOfDate}. Pending items are not yet law and are flagged clearly.`}
       </div>
       {CHANGES_MOCK.map((c, i) => (
         <motion.div
@@ -183,7 +252,7 @@ function ChangesView({ asOfDate }) {
               <div className="change-card-desc">{c.desc}</div>
             </div>
             <span className={`change-card-date ${c.status}`}>
-              {c.status === 'enacted' ? '✓ Enacted' : '⏳ Pending'} — {c.date}
+              {c.status === 'enacted' ? (isSpanish ? '✓ Promulgada' : '✓ Enacted') : (isSpanish ? '⏳ Pendiente' : '⏳ Pending')} — {c.date}
             </span>
           </div>
         </motion.div>
@@ -245,13 +314,13 @@ export default function ResultsDashboard({ selection, onBack }) {
               <MapPin size={13} />
               <span>{displayAddress}</span>
             </div>
-            <span className="topbar-date">As of {displayDate}</span>
+            <span className="topbar-date">{isSpanish ? 'A partir del' : 'As of'} {displayDate}</span>
           </div>
         )}
 
         <div className="topbar-right">
           <button className="topbar-back" onClick={onBack}>
-            <ArrowLeft size={13} /> New Search
+            <ArrowLeft size={13} /> {isSpanish ? 'Nueva Búsqueda' : 'New Search'}
           </button>
           <button className="topbar-lang" onClick={() => setIsSpanish(s => !s)}>
             <Globe size={13} /> {isSpanish ? 'English' : 'Español'}
@@ -267,7 +336,7 @@ export default function ResultsDashboard({ selection, onBack }) {
           <aside className="results-sidebar">
             {/* Address */}
             <div className="sidebar-section">
-              <div className="sidebar-label">Address</div>
+              <div className="sidebar-label">{isSpanish ? 'Dirección' : 'Address'}</div>
               <div className="sidebar-card">
                 <div className="sidebar-address-text">{displayAddress}</div>
                 <div className="sidebar-city-state">{data?.legal_city}, {data?.state}</div>
@@ -276,17 +345,17 @@ export default function ResultsDashboard({ selection, onBack }) {
 
             {/* Building Facts */}
             <div className="sidebar-section">
-              <div className="sidebar-label">Building Facts</div>
+              <div className="sidebar-label">{isSpanish ? 'Datos del Edificio' : 'Building Facts'}</div>
               <div className="sidebar-card">
                 {/* Year Built */}
                 <div className="sidebar-fact-row">
-                  <span className="sidebar-fact-key">Year Built</span>
+                  <span className="sidebar-fact-key">{isSpanish ? 'Año de Constr.' : 'Year Built'}</span>
                   {yearBuilt
                     ? <span className="sidebar-fact-val">{yearBuilt}</span>
                     : <input
                         className="sidebar-fact-input"
                         type="number"
-                        placeholder="Unknown"
+                        placeholder={isSpanish ? 'Desc.' : 'Unknown'}
                         value={yearBuilt}
                         onChange={e => setYearBuilt(e.target.value)}
                       />
@@ -294,24 +363,24 @@ export default function ResultsDashboard({ selection, onBack }) {
                 </div>
                 {/* Units */}
                 <div className="sidebar-fact-row">
-                  <span className="sidebar-fact-key">Units</span>
+                  <span className="sidebar-fact-key">{isSpanish ? 'Unidades' : 'Units'}</span>
                   {units
                     ? <span className="sidebar-fact-val">{units}</span>
                     : <input
                         className="sidebar-fact-input"
                         type="number"
-                        placeholder="Unknown"
+                        placeholder={isSpanish ? 'Desc.' : 'Unknown'}
                         value={units}
                         onChange={e => setUnits(e.target.value)}
                       />
                   }
                 </div>
                 <div className="sidebar-fact-row">
-                  <span className="sidebar-fact-key">State</span>
+                  <span className="sidebar-fact-key">{isSpanish ? 'Estado' : 'State'}</span>
                   <span className="sidebar-fact-val">{data?.state || selection?.state || '—'}</span>
                 </div>
                 <div className="sidebar-fact-row">
-                  <span className="sidebar-fact-key">Match</span>
+                  <span className="sidebar-fact-key">{isSpanish ? 'Base de Datos' : 'Match'}</span>
                   <span className="sidebar-fact-val" style={{ color: data?.match_status === 'match' ? '#22c55e' : '#f59e0b' }}>
                     {data?.match_status || '—'}
                   </span>
@@ -322,22 +391,22 @@ export default function ResultsDashboard({ selection, onBack }) {
             {/* Summary */}
             {!loading && !error && (
               <div className="sidebar-section">
-                <div className="sidebar-label">Rule Summary</div>
+                <div className="sidebar-label">{isSpanish ? 'Resumen de Reglas' : 'Rule Summary'}</div>
                 <div className="sidebar-summary">
                   <div className="summary-chip green">
-                    <span className="summary-chip-label"><CheckCircle size={13}/> Applies</span>
+                    <span className="summary-chip-label"><CheckCircle size={13}/> {isSpanish ? 'Aplica' : 'Applies'}</span>
                     <span className="summary-chip-count">{summaryCounts.applies}</span>
                   </div>
                   <div className="summary-chip yellow">
-                    <span className="summary-chip-label"><HelpCircle size={13}/> Unknown</span>
+                    <span className="summary-chip-label"><HelpCircle size={13}/> {isSpanish ? 'Desc.' : 'Unknown'}</span>
                     <span className="summary-chip-count">{summaryCounts.unknown}</span>
                   </div>
                   <div className="summary-chip red">
-                    <span className="summary-chip-label"><Shield size={13}/> Exempt</span>
+                    <span className="summary-chip-label"><Shield size={13}/> {isSpanish ? 'Exento' : 'Exempt'}</span>
                     <span className="summary-chip-count">{summaryCounts.exempt}</span>
                   </div>
                   <div className="summary-chip gray">
-                    <span className="summary-chip-label"><Clock size={13}/> Upcoming</span>
+                    <span className="summary-chip-label"><Clock size={13}/> {isSpanish ? 'Pendiente' : 'Upcoming'}</span>
                     <span className="summary-chip-count">{summaryCounts.pending}</span>
                   </div>
                 </div>
@@ -345,7 +414,9 @@ export default function ResultsDashboard({ selection, onBack }) {
             )}
 
             <div className="sidebar-legal">
-              Informational only — not legal advice. Every answer cites the source text and separates enacted from pending law.
+              {isSpanish 
+                ? 'Solo informativo — no es asesoría legal. Cada respuesta cita el texto fuente y separa la ley promulgada de la pendiente.'
+                : 'Informational only — not legal advice. Every answer cites the source text and separates enacted from pending law.'}
             </div>
           </aside>
         )}
@@ -353,39 +424,39 @@ export default function ResultsDashboard({ selection, onBack }) {
         {/* Main */}
         <main className="results-main">
           {isChangesView ? (
-            <ChangesView asOfDate={displayDate} />
+            <ChangesView asOfDate={displayDate} isSpanish={isSpanish} />
           ) : loading ? (
             <div className="results-loading">
               <div className="loading-spinner" />
-              <div className="loading-text">Loading rules for {displayAddress}…</div>
+              <div className="loading-text">{isSpanish ? 'Cargando reglas para' : 'Loading rules for'} {displayAddress}…</div>
             </div>
           ) : error ? (
             <div className="results-error">
-              <h3>Could not load rules</h3>
+              <h3>{isSpanish ? 'No se pudieron cargar las reglas' : 'Could not load rules'}</h3>
               <p>{error}</p>
               <button
                 style={{ marginTop:12, background:'#00D4AA', color:'#fff', border:'none', borderRadius:50, padding:'10px 28px', fontFamily:'Urbanist', fontWeight:800, fontSize:14, cursor:'pointer', boxShadow:'0 4px 16px rgba(0,212,170,0.3)' }}
                 onClick={fetchData}
-              >Retry</button>
+              >{isSpanish ? 'Reintentar' : 'Retry'}</button>
             </div>
           ) : data?.rules_by_category ? (
             Object.entries(data.rules_by_category).map(([cat, items]) => (
               <motion.div key={cat} className="category-group"
                 initial={{ opacity:0 }} animate={{ opacity:1 }} transition={{ duration:0.3 }}>
                 <div className="category-title">
-                  {CATEGORY_LABELS[cat] || cat.replace(/_/g,' ')}
+                  {getCategoryLabel(cat, isSpanish)}
                 </div>
                 <div className="rules-grid">
                   {items.map((item, i) => (
-                    <RuleCard key={`${item.rule.team_rule_id || i}`} item={item} onClick={setActiveRule} />
+                    <RuleCard key={`${item.rule.team_rule_id || i}`} item={item} onClick={setActiveRule} isSpanish={isSpanish} />
                   ))}
                 </div>
               </motion.div>
             ))
           ) : (
             <div className="results-error">
-              <h3>No rules found</h3>
-              <p>No rule data available for this address.</p>
+              <h3>{isSpanish ? 'No se encontraron reglas' : 'No rules found'}</h3>
+              <p>{isSpanish ? 'No hay datos de reglas disponibles para esta dirección.' : 'No rule data available for this address.'}</p>
             </div>
           )}
         </main>
