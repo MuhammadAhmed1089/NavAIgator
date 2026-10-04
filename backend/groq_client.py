@@ -31,11 +31,12 @@ def _load_keys() -> list[str]:
             keys.append(key)
     if not keys:
         raise ValueError(
-            "No Groq API keys found. Set GROQ_API_KEY_1 ... GROQ_API_KEY_8 in backend/.env"
+            "No Groq API keys found. Set GROQ_API_KEY_1 ... GROQ_API_KEY_6 in backend/.env"
         )
     logger.info(f"Loaded {len(keys)} Groq API key(s) for rotation.")
     return keys
 
+print("GROQ vars seen:", sorted(k for k in os.environ if "GROQ" in k.upper()), flush=True)
 
 _KEYS = _load_keys()
 _MODEL = os.getenv("GROQ_MODEL", "llama3-70b-8192")
