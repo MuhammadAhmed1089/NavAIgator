@@ -100,9 +100,9 @@ function AuditModal({ rule, onClose, isSpanish }) {
             </a>
           )}
 
-          <div style={{ marginTop:20, padding:'10px 14px', background:'rgba(255,255,255,0.04)', borderRadius:10, display:'flex', alignItems:'center', gap:8 }}>
-            <Shield size={13} style={{ color:'rgba(255,255,255,0.3)', flexShrink:0 }} />
-            <span style={{ fontSize:11, color:'rgba(255,255,255,0.35)', lineHeight:1.5 }}>
+          <div className="modal-legal-footer">
+            <Shield size={13} style={{ color:'#00D4AA', flexShrink:0 }} />
+            <span>
               Informational only — not legal advice. Every verdict cites the source text and separates enacted from pending law.
             </span>
           </div>
@@ -179,7 +179,7 @@ function ChangesView({ asOfDate }) {
           <div className="change-card-row">
             <div>
               <div className="change-card-title">{c.title}</div>
-              <div style={{ fontSize:11, color:'rgba(255,255,255,0.35)', marginBottom:6, fontWeight:700 }}>{c.jurisdiction}</div>
+              <div style={{ fontSize:11, color:'#9ca3af', marginBottom:6, fontWeight:700 }}>{c.jurisdiction}</div>
               <div className="change-card-desc">{c.desc}</div>
             </div>
             <span className={`change-card-date ${c.status}`}>
@@ -344,8 +344,7 @@ export default function ResultsDashboard({ selection, onBack }) {
               </div>
             )}
 
-            {/* Legal notice */}
-            <div style={{ fontSize:10, color:'rgba(255,255,255,0.25)', lineHeight:1.5, padding:'0 2px', marginTop:'auto' }}>
+            <div className="sidebar-legal">
               Informational only — not legal advice. Every answer cites the source text and separates enacted from pending law.
             </div>
           </aside>
@@ -365,7 +364,7 @@ export default function ResultsDashboard({ selection, onBack }) {
               <h3>Could not load rules</h3>
               <p>{error}</p>
               <button
-                style={{ marginTop:12, background:'#00D4AA', color:'#fff', border:'none', borderRadius:50, padding:'10px 24px', fontFamily:'Urbanist', fontWeight:700, cursor:'pointer' }}
+                style={{ marginTop:12, background:'#00D4AA', color:'#fff', border:'none', borderRadius:50, padding:'10px 28px', fontFamily:'Urbanist', fontWeight:800, fontSize:14, cursor:'pointer', boxShadow:'0 4px 16px rgba(0,212,170,0.3)' }}
                 onClick={fetchData}
               >Retry</button>
             </div>
