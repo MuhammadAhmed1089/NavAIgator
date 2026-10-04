@@ -26,7 +26,7 @@ logger = logging.getLogger(__name__)
 def _load_keys() -> list[str]:
     keys = []
     for i in range(1, 9):
-        key = os.getenv(f"GROQ_API_KEY_{i}", "").strip()
+        key = os.getenv(f"GROK_API_KEY_{i}", "").strip()
         if key:
             keys.append(key)
     if not keys:
