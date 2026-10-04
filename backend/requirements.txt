@@ -10,3 +10,4 @@ psycopg2-binary
 jsonschema
 requests
 aiofiles
+langchain_text_splitters
