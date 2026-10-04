@@ -62,6 +62,10 @@ class IngestRequest(BaseModel):
 
 
 # --- Standard Endpoints ---
+@app.get("/")
+def get_serverislive():
+    """Returns a list of all 500 addresses for the frontend dropdown."""
+    return "server is live"
 
 @app.get("/api/addresses")
 def get_addresses():
