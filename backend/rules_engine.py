@@ -21,7 +21,10 @@ OUTPUT_PATH = ROOT / "lookups.json"
 
 def load_data():
     with open(RULES_PATH, "r", encoding="utf-8") as f:
-        rules = json.load(f)
+        rules_data = json.load(f)
+        # Handle formatted submission schema {"rules": [...]}
+        rules = rules_data.get("rules", rules_data) if isinstance(rules_data, dict) else rules_data
+        
     with open(GEO_PATH, "r", encoding="utf-8") as f:
         addresses = json.load(f)
     return rules, addresses
