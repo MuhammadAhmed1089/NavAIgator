@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Search, Globe, ChevronRight } from 'lucide-react';
 import './LandingPage.css';
 
-const API = 'http://127.0.0.1:8000/api';
+const API = import.meta.env.PROD ? '/api' : 'http://127.0.0.1:8000/api';
 
 import laImg from '../public/img/la.jpg';
 import sfImg from '../public/img/sf.jpg';

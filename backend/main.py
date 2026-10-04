@@ -5,8 +5,10 @@ Serves the pre-computed JSON lookups and powers the live AI innovations.
 
 import json
 from pathlib import Path
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from pydantic import BaseModel
 
 from groq_client import chat_complete
@@ -223,6 +225,30 @@ def ingest_live_rule(req: IngestRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# ── Serve React frontend in production ──────────────────────────────────────
+# When deployed, FastAPI serves the Vite build output from ../frontend/dist
+FRONTEND_DIST = ROOT.parent / "frontend" / "dist"
+if FRONTEND_DIST.exists():
+    # Serve static assets (JS, CSS, images)
+    app.mount("/assets", StaticFiles(directory=FRONTEND_DIST / "assets"), name="assets")
+    # Serve states-10m.json for the map
+    _states_json = FRONTEND_DIST / "states-10m.json"
+    
+    @app.get("/states-10m.json")
+    def serve_states_json():
+        if _states_json.exists():
+            return FileResponse(_states_json)
+        raise HTTPException(status_code=404, detail="Map data not found")
+
+    # Catch-all: serve index.html for any unmatched route (SPA routing)
+    @app.get("/{full_path:path}")
+    def serve_spa(full_path: str):
+        index = FRONTEND_DIST / "index.html"
+        if index.exists():
+            return FileResponse(index)
+        raise HTTPException(status_code=404, detail="Frontend not built")
+
+
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)
+    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)

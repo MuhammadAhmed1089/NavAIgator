@@ -3,12 +3,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
   MapPin, ArrowLeft, Globe, X, ExternalLink,
   AlertTriangle, CheckCircle, HelpCircle, Clock,
-  ChevronRight, Shield
 } from 'lucide-react';
 import UpcomingChangesMap from './UpcomingChangesMap';
 import './ResultsDashboard.css';
 
-const API = 'http://127.0.0.1:8000/api';
+const API = import.meta.env.PROD ? '/api' : 'http://127.0.0.1:8000/api';
 
 /* ─── Helpers ──────────────────────────────────────────────── */
 const getStatusMeta = (s, isSpanish) => {
@@ -227,7 +226,7 @@ function ChangesView({ asOfDate, isSpanish }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('http://localhost:8000/api/changes')
+    fetch(`${API}/changes`)
       .then(res => res.json())
       .then(data => {
         setChanges(data);

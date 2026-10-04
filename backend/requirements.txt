@@ -4,9 +4,9 @@ groq
 langchain
 sqlalchemy
 fastapi
-uvicorn
+uvicorn[standard]
 python-dotenv
 psycopg2-binary
 jsonschema
 requests
-
+aiofiles
