@@ -18,7 +18,13 @@
     "source_doc_id": "D008",
     "jurisdiction": "Berkeley, CA",
     "retrieval_date": "2026-10-01T22:35Z",
-    "team_rule_id": "r-0001"
+    "team_rule_id": "r-0001",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Maximum tenant screening fee for 2026",
@@ -39,7 +45,13 @@
     "source_doc_id": "D005",
     "jurisdiction": "Berkeley, CA",
     "retrieval_date": "2026-10-01T22:35Z",
-    "team_rule_id": "r-0002"
+    "team_rule_id": "r-0002",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Screening fee cannot be charged when no unit is available",
@@ -60,7 +72,13 @@
     "source_doc_id": "D005",
     "jurisdiction": "Berkeley, CA",
     "retrieval_date": "2026-10-01T22:35Z",
-    "team_rule_id": "r-0003"
+    "team_rule_id": "r-0003",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Prohibition of non‑refundable fees for existing tenants",
@@ -81,7 +99,13 @@
     "source_doc_id": "D005",
     "jurisdiction": "Berkeley, CA",
     "retrieval_date": "2026-10-01T22:35Z",
-    "team_rule_id": "r-0004"
+    "team_rule_id": "r-0004",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Mandatory tenant screening fee rights disclosure",
@@ -102,7 +126,13 @@
     "source_doc_id": "D005",
     "jurisdiction": "Berkeley, CA",
     "retrieval_date": "2026-10-01T22:35Z",
-    "team_rule_id": "r-0005"
+    "team_rule_id": "r-0005",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Maximum security deposit amount for most landlords",
@@ -123,7 +153,13 @@
     "source_doc_id": "D007",
     "jurisdiction": "Berkeley, CA",
     "retrieval_date": "2026-10-01T22:35Z",
-    "team_rule_id": "r-0006"
+    "team_rule_id": "r-0006",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Prohibition on Criminal History Inquiries and Discriminatory Actions",
@@ -144,7 +180,13 @@
     "source_doc_id": "D003",
     "jurisdiction": "Berkeley, CA",
     "retrieval_date": "2026-10-01T22:35Z",
-    "team_rule_id": "r-0007"
+    "team_rule_id": "r-0007",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Just Cause Eviction Coverage for Covered Units",
@@ -165,7 +207,13 @@
     "source_doc_id": "D009",
     "jurisdiction": "Berkeley, CA",
     "retrieval_date": "2026-10-01T22:35Z",
-    "team_rule_id": "r-0008"
+    "team_rule_id": "r-0008",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Security Deposit Interest Requirement for Covered Units",
@@ -186,7 +234,13 @@
     "source_doc_id": "D009",
     "jurisdiction": "Berkeley, CA",
     "retrieval_date": "2026-10-01T22:35Z",
-    "team_rule_id": "r-0009"
+    "team_rule_id": "r-0009",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Fair Chance Screening Restrictions",
@@ -207,7 +261,13 @@
     "source_doc_id": "D010",
     "jurisdiction": "Boston, MA",
     "retrieval_date": "2026-10-01T22:44Z",
-    "team_rule_id": "r-0010"
+    "team_rule_id": "r-0010",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Just cause eviction requirement",
@@ -228,7 +288,13 @@
     "source_doc_id": "D006",
     "jurisdiction": "Berkeley, CA",
     "retrieval_date": "2026-10-01T22:35Z",
-    "team_rule_id": "r-0011"
+    "team_rule_id": "r-0011",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Notice of Tenants’ Rights and Resources required when ending tenancy",
@@ -249,7 +315,13 @@
     "source_doc_id": "D013",
     "jurisdiction": "Boston, MA",
     "retrieval_date": "2026-10-01T22:35Z",
-    "team_rule_id": "r-0012"
+    "team_rule_id": "r-0012",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Prohibition on Sale and Use of Coordinated Pricing Algorithms for Rent Setting",
@@ -270,7 +342,13 @@
     "source_doc_id": "D001",
     "jurisdiction": "Berkeley, CA",
     "retrieval_date": "2026-10-01T22:44Z",
-    "team_rule_id": "r-0013"
+    "team_rule_id": "r-0013",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Prohibition on Coordinated Pricing Algorithms for Rent Setting",
@@ -291,7 +369,13 @@
     "source_doc_id": "D001",
     "jurisdiction": "Berkeley, CA",
     "retrieval_date": "2026-10-01T22:44Z",
-    "team_rule_id": "r-0014"
+    "team_rule_id": "r-0014",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Maximum application screening fee amount",
@@ -312,7 +396,13 @@
     "source_doc_id": "D026",
     "jurisdiction": "CA",
     "retrieval_date": "2026-10-01T22:35Z",
-    "team_rule_id": "r-0015"
+    "team_rule_id": "r-0015",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Required application screening process when charging a fee",
@@ -333,7 +423,13 @@
     "source_doc_id": "D026",
     "jurisdiction": "CA",
     "retrieval_date": "2026-10-01T22:35Z",
-    "team_rule_id": "r-0016"
+    "team_rule_id": "r-0016",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Rent increase limit for residential properties",
@@ -354,7 +450,13 @@
     "source_doc_id": "D024",
     "jurisdiction": "CA",
     "retrieval_date": "2026-10-01T22:35Z",
-    "team_rule_id": "r-0017"
+    "team_rule_id": "r-0017",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": 15,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Tenant selection criteria and exemption for owner-occupied 2-family dwellings",
@@ -375,7 +477,13 @@
     "source_doc_id": "D029",
     "jurisdiction": "Cambridge, MA",
     "retrieval_date": "2026-10-01T22:36Z",
-    "team_rule_id": "r-0018"
+    "team_rule_id": "r-0018",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Prohibition on retaliatory eviction",
@@ -396,7 +504,13 @@
     "source_doc_id": "D027",
     "jurisdiction": "CA",
     "retrieval_date": "2026-10-01T22:35Z",
-    "team_rule_id": "r-0019"
+    "team_rule_id": "r-0019",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Prohibit income standards that ignore household aggregate income",
@@ -417,7 +531,13 @@
     "source_doc_id": "D027",
     "jurisdiction": "CA",
     "retrieval_date": "2026-10-01T22:35Z",
-    "team_rule_id": "r-0020"
+    "team_rule_id": "r-0020",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Just Cause Eviction Requirements",
@@ -438,7 +558,13 @@
     "source_doc_id": "D040",
     "jurisdiction": "Los Angeles, CA",
     "retrieval_date": "2026-10-01T22:36Z",
-    "team_rule_id": "r-0021"
+    "team_rule_id": "r-0021",
+    "compiled_logic": {
+      "exempt_if_built_after_year": 1978,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": 2,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Maximum Rent Increase Under AB 1482",
@@ -459,7 +585,13 @@
     "source_doc_id": "D040",
     "jurisdiction": "Los Angeles, CA",
     "retrieval_date": "2026-10-01T22:36Z",
-    "team_rule_id": "r-0022"
+    "team_rule_id": "r-0022",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "AB 1482 Rent Increase Limits for Buildings Over 15 Years",
@@ -480,7 +612,13 @@
     "source_doc_id": "D040",
     "jurisdiction": "Los Angeles, CA",
     "retrieval_date": "2026-10-01T22:36Z",
-    "team_rule_id": "r-0023"
+    "team_rule_id": "r-0023",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Just cause requirement for tenancy termination after 12 months occupancy",
@@ -501,7 +639,13 @@
     "source_doc_id": "D023",
     "jurisdiction": "CA",
     "retrieval_date": "2026-10-01T22:35Z",
-    "team_rule_id": "r-0024"
+    "team_rule_id": "r-0024",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Statement of cause required for termination after 12 or 24 months occupancy",
@@ -522,7 +666,13 @@
     "source_doc_id": "D023",
     "jurisdiction": "CA",
     "retrieval_date": "2026-10-01T22:35Z",
-    "team_rule_id": "r-0025"
+    "team_rule_id": "r-0025",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Fourteen‑day notice to quit for nonpayment of rent",
@@ -543,7 +693,13 @@
     "source_doc_id": "D050",
     "jurisdiction": "MA",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0026"
+    "team_rule_id": "r-0026",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Security deposit limit of one month’s rent",
@@ -564,7 +720,13 @@
     "source_doc_id": "D025",
     "jurisdiction": "CA",
     "retrieval_date": "2026-10-01T22:35Z",
-    "team_rule_id": "r-0027"
+    "team_rule_id": "r-0027",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Prohibition of nonrefundable security deposit clauses",
@@ -585,7 +747,13 @@
     "source_doc_id": "D025",
     "jurisdiction": "CA",
     "retrieval_date": "2026-10-01T22:35Z",
-    "team_rule_id": "r-0028"
+    "team_rule_id": "r-0028",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Notice period for termination of estate at will for nonpayment of rent",
@@ -606,7 +774,13 @@
     "source_doc_id": "D051",
     "jurisdiction": "MA",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0029"
+    "team_rule_id": "r-0029",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Maximum residential rental application fee",
@@ -627,7 +801,13 @@
     "source_doc_id": "D066",
     "jurisdiction": "NJ",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0030"
+    "team_rule_id": "r-0030",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "No‑Fault Evictions Require Relocation Assistance and LAHD Declaration",
@@ -648,7 +828,13 @@
     "source_doc_id": "D043",
     "jurisdiction": "Los Angeles, CA",
     "retrieval_date": "2026-10-01T22:36Z",
-    "team_rule_id": "r-0031"
+    "team_rule_id": "r-0031",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Escrow Requirement for Relocation Assistance Including Security Deposit",
@@ -669,7 +855,13 @@
     "source_doc_id": "D043",
     "jurisdiction": "Los Angeles, CA",
     "retrieval_date": "2026-10-01T22:36Z",
-    "team_rule_id": "r-0032"
+    "team_rule_id": "r-0032",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Landlord must file Declaration of Intent to Evict for JCO units when terminating for demolition",
@@ -690,7 +882,13 @@
     "source_doc_id": "D043",
     "jurisdiction": "Los Angeles, CA",
     "retrieval_date": "2026-10-01T22:36Z",
-    "team_rule_id": "r-0033"
+    "team_rule_id": "r-0033",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Prohibit pre‑conditional‑offer criminal record inquiries",
@@ -711,7 +909,13 @@
     "source_doc_id": "D065",
     "jurisdiction": "NJ",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0034"
+    "team_rule_id": "r-0034",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": 4
+    }
   },
   {
     "title": "Disclosure of criminal‑history screening criteria before application fee",
@@ -732,7 +936,13 @@
     "source_doc_id": "D065",
     "jurisdiction": "NJ",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0035"
+    "team_rule_id": "r-0035",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Restrictions on Use of Criminal Records in Applicant Screening",
@@ -753,7 +963,13 @@
     "source_doc_id": "D065",
     "jurisdiction": "NJ",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0036"
+    "team_rule_id": "r-0036",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Prohibition on discriminatory advertising based on criminal records",
@@ -774,7 +990,13 @@
     "source_doc_id": "D065",
     "jurisdiction": "NJ",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0037"
+    "team_rule_id": "r-0037",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Prohibit drug or alcohol testing of applicants",
@@ -795,7 +1017,13 @@
     "source_doc_id": "D065",
     "jurisdiction": "NJ",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0038"
+    "team_rule_id": "r-0038",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Return of applicant’s rental application fee",
@@ -816,7 +1044,13 @@
     "source_doc_id": "D065",
     "jurisdiction": "NJ",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0039"
+    "team_rule_id": "r-0039",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Notice period for eviction after successful appeal",
@@ -837,7 +1071,13 @@
     "source_doc_id": "D065",
     "jurisdiction": "NJ",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0040"
+    "team_rule_id": "r-0040",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Rent parity for handicap-accessible housing",
@@ -858,7 +1098,13 @@
     "source_doc_id": "D049",
     "jurisdiction": "MA",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0041"
+    "team_rule_id": "r-0041",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Limits on security deposits and fees in lieu of deposits",
@@ -879,7 +1125,13 @@
     "source_doc_id": "D052",
     "jurisdiction": "MA",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0042"
+    "team_rule_id": "r-0042",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Security deposit amount limit",
@@ -900,7 +1152,13 @@
     "source_doc_id": "D052",
     "jurisdiction": "MA",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0043"
+    "team_rule_id": "r-0043",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Ban on Automated Rent-Setting Software",
@@ -921,7 +1179,13 @@
     "source_doc_id": "D076",
     "jurisdiction": "San Diego, CA",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0044"
+    "team_rule_id": "r-0044",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Ban on algorithmic rent price‑setting devices",
@@ -942,7 +1206,13 @@
     "source_doc_id": "D076",
     "jurisdiction": "San Diego, CA",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0045"
+    "team_rule_id": "r-0045",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Prohibition of sale, licensing, and use of algorithmic devices for rent setting",
@@ -963,7 +1233,13 @@
     "source_doc_id": "D076",
     "jurisdiction": "San Diego, CA",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0046"
+    "team_rule_id": "r-0046",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Prohibition on Landlord Use of Algorithmic Devices for Rental Pricing",
@@ -984,7 +1260,13 @@
     "source_doc_id": "D076",
     "jurisdiction": "San Diego, CA",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0047"
+    "team_rule_id": "r-0047",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Prohibition on Sale, Licensing, and Use of Algorithmic Devices for Rental Pricing",
@@ -1005,7 +1287,13 @@
     "source_doc_id": "D076",
     "jurisdiction": "San Diego, CA",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0048"
+    "team_rule_id": "r-0048",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Prohibition of algorithmic devices for rent setting",
@@ -1026,7 +1314,13 @@
     "source_doc_id": "D081",
     "jurisdiction": "San Francisco, CA",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0049"
+    "team_rule_id": "r-0049",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Just Cause Requirement for Eviction",
@@ -1047,7 +1341,13 @@
     "source_doc_id": "D079",
     "jurisdiction": "San Francisco, CA",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0050"
+    "team_rule_id": "r-0050",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Annual allowable rent increase for rent‑controlled units (2026‑2027)",
@@ -1068,7 +1368,13 @@
     "source_doc_id": "D080",
     "jurisdiction": "San Francisco, CA",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0051"
+    "team_rule_id": "r-0051",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Just cause requirement for tenancy termination",
@@ -1089,7 +1395,13 @@
     "source_doc_id": "D073",
     "jurisdiction": "San Diego, CA",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0052"
+    "team_rule_id": "r-0052",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Exemptions from Just Cause Eviction Requirements",
@@ -1110,7 +1422,13 @@
     "source_doc_id": "D073",
     "jurisdiction": "San Diego, CA",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0053"
+    "team_rule_id": "r-0053",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Just cause required for termination",
@@ -1131,7 +1449,13 @@
     "source_doc_id": "D073",
     "jurisdiction": "San Diego, CA",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0054"
+    "team_rule_id": "r-0054",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Exemption from just cause requirements",
@@ -1152,7 +1476,13 @@
     "source_doc_id": "D073",
     "jurisdiction": "San Diego, CA",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0055"
+    "team_rule_id": "r-0055",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Owner personal occupancy termination requirement",
@@ -1173,7 +1503,13 @@
     "source_doc_id": "D073",
     "jurisdiction": "San Diego, CA",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0056"
+    "team_rule_id": "r-0056",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Just cause eviction notice requirements for demolition or substantial remodel",
@@ -1194,7 +1530,13 @@
     "source_doc_id": "D073",
     "jurisdiction": "San Diego, CA",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0057"
+    "team_rule_id": "r-0057",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "At-Fault Just Cause Termination Notice Requirements",
@@ -1215,7 +1557,13 @@
     "source_doc_id": "D073",
     "jurisdiction": "San Diego, CA",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0058"
+    "team_rule_id": "r-0058",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "No-Fault Just Cause Termination Notice Requirements",
@@ -1236,7 +1584,13 @@
     "source_doc_id": "D073",
     "jurisdiction": "San Diego, CA",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0059"
+    "team_rule_id": "r-0059",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Landlord must notify Commission of no‑fault just cause termination",
@@ -1257,7 +1611,13 @@
     "source_doc_id": "D073",
     "jurisdiction": "San Diego, CA",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0060"
+    "team_rule_id": "r-0060",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Relocation assistance payment amount",
@@ -1278,7 +1638,13 @@
     "source_doc_id": "D073",
     "jurisdiction": "San Diego, CA",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0061"
+    "team_rule_id": "r-0061",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Displaced tenant must be offered the unit first",
@@ -1299,7 +1665,13 @@
     "source_doc_id": "D073",
     "jurisdiction": "San Diego, CA",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0062"
+    "team_rule_id": "r-0062",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Landlord must communicate minimum screening criteria",
@@ -1320,7 +1692,13 @@
     "source_doc_id": "D073",
     "jurisdiction": "San Diego, CA",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0063"
+    "team_rule_id": "r-0063",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Return of security deposit required in addition to relocation assistance",
@@ -1341,7 +1719,13 @@
     "source_doc_id": "D073",
     "jurisdiction": "San Diego, CA",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0064"
+    "team_rule_id": "r-0064",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Wrongful eviction damages for illegal possession recovery",
@@ -1362,7 +1746,13 @@
     "source_doc_id": "D073",
     "jurisdiction": "San Diego, CA",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0065"
+    "team_rule_id": "r-0065",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Just cause required for lease non‑renewal",
@@ -1383,7 +1773,13 @@
     "source_doc_id": "D067",
     "jurisdiction": "NJ",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0066"
+    "team_rule_id": "r-0066",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Security deposit return timeline and notice requirements after lease termination due to domestic violence",
@@ -1404,7 +1800,13 @@
     "source_doc_id": "D067",
     "jurisdiction": "NJ",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0067"
+    "team_rule_id": "r-0067",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Return of security deposit for service‑member lease terminations",
@@ -1425,7 +1827,13 @@
     "source_doc_id": "D067",
     "jurisdiction": "NJ",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0068"
+    "team_rule_id": "r-0068",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Maximum security deposit amount",
@@ -1446,7 +1854,13 @@
     "source_doc_id": "D067",
     "jurisdiction": "NJ",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0069"
+    "team_rule_id": "r-0069",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Interest payment and notice requirements for security deposits",
@@ -1467,7 +1881,13 @@
     "source_doc_id": "D067",
     "jurisdiction": "NJ",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0070"
+    "team_rule_id": "r-0070",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Return of security deposit within 30 days after tenancy termination",
@@ -1488,7 +1908,13 @@
     "source_doc_id": "D067",
     "jurisdiction": "NJ",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0071"
+    "team_rule_id": "r-0071",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Return period delayed when tenant breaks lease without legal cause",
@@ -1509,7 +1935,13 @@
     "source_doc_id": "D067",
     "jurisdiction": "NJ",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0072"
+    "team_rule_id": "r-0072",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "New owner’s responsibility for security deposit upon property transfer",
@@ -1530,7 +1962,13 @@
     "source_doc_id": "D067",
     "jurisdiction": "NJ",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0073"
+    "team_rule_id": "r-0073",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Security deposit dispute jurisdiction thresholds",
@@ -1551,7 +1989,13 @@
     "source_doc_id": "D067",
     "jurisdiction": "NJ",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0074"
+    "team_rule_id": "r-0074",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Civil penalty for withholding security deposits of assisted tenants",
@@ -1572,7 +2016,13 @@
     "source_doc_id": "D067",
     "jurisdiction": "NJ",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0075"
+    "team_rule_id": "r-0075",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Criminal penalty for unlawful use of security deposit monies",
@@ -1593,7 +2043,13 @@
     "source_doc_id": "D067",
     "jurisdiction": "NJ",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0076"
+    "team_rule_id": "r-0076",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Landlords may charge applicants for cost of credit report",
@@ -1614,7 +2070,13 @@
     "source_doc_id": "D067",
     "jurisdiction": "NJ",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0077"
+    "team_rule_id": "r-0077",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Rent increase notice and unconscionability requirements",
@@ -1635,7 +2097,13 @@
     "source_doc_id": "D067",
     "jurisdiction": "NJ",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0078"
+    "team_rule_id": "r-0078",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Landlord registration required to evict tenants",
@@ -1656,7 +2124,13 @@
     "source_doc_id": "D067",
     "jurisdiction": "NJ",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0079"
+    "team_rule_id": "r-0079",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Security deposit return upon constructive eviction",
@@ -1677,7 +2151,13 @@
     "source_doc_id": "D067",
     "jurisdiction": "NJ",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0080"
+    "team_rule_id": "r-0080",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Good cause required for eviction",
@@ -1698,7 +2178,13 @@
     "source_doc_id": "D067",
     "jurisdiction": "NJ",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0081"
+    "team_rule_id": "r-0081",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Anti-Eviction Act – Good‑Cause Requirement for Eviction or Non‑Renewal",
@@ -1719,7 +2205,13 @@
     "source_doc_id": "D067",
     "jurisdiction": "NJ",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0082"
+    "team_rule_id": "r-0082",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Failure to Pay Rent – Notice Requirement",
@@ -1740,7 +2232,13 @@
     "source_doc_id": "D067",
     "jurisdiction": "NJ",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0083"
+    "team_rule_id": "r-0083",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Disorderly Conduct – Notice to Quit",
@@ -1761,7 +2259,13 @@
     "source_doc_id": "D067",
     "jurisdiction": "NJ",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0084"
+    "team_rule_id": "r-0084",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Substantial Violation of Rules – Notice to Quit",
@@ -1782,7 +2286,13 @@
     "source_doc_id": "D067",
     "jurisdiction": "NJ",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0085"
+    "team_rule_id": "r-0085",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Rent increase must not be unconscionable",
@@ -1803,7 +2313,13 @@
     "source_doc_id": "D067",
     "jurisdiction": "NJ",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0086"
+    "team_rule_id": "r-0086",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Eviction for illegal drug activity in public housing",
@@ -1824,7 +2340,13 @@
     "source_doc_id": "D067",
     "jurisdiction": "NJ",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0087"
+    "team_rule_id": "r-0087",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Eviction for failure to pay rent after rent increase notice",
@@ -1845,7 +2367,13 @@
     "source_doc_id": "D067",
     "jurisdiction": "NJ",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0088"
+    "team_rule_id": "r-0088",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Eviction for health and safety violations requiring removal",
@@ -1866,7 +2394,13 @@
     "source_doc_id": "D067",
     "jurisdiction": "NJ",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0089"
+    "team_rule_id": "r-0089",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Eviction for landlord permanently retiring property",
@@ -1887,7 +2421,13 @@
     "source_doc_id": "D067",
     "jurisdiction": "NJ",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0090"
+    "team_rule_id": "r-0090",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "One‑month notice before eviction for lease‑change refusal",
@@ -1908,7 +2448,13 @@
     "source_doc_id": "D067",
     "jurisdiction": "NJ",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0091"
+    "team_rule_id": "r-0091",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "One‑month notice before eviction for habitual non‑payment",
@@ -1929,7 +2475,13 @@
     "source_doc_id": "D067",
     "jurisdiction": "NJ",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0092"
+    "team_rule_id": "r-0092",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Three‑year notice before eviction for conversion to condo/co‑op",
@@ -1950,7 +2502,13 @@
     "source_doc_id": "D067",
     "jurisdiction": "NJ",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0093"
+    "team_rule_id": "r-0093",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Two‑month notice before eviction after conversion to condo/co‑op",
@@ -1971,7 +2529,13 @@
     "source_doc_id": "D067",
     "jurisdiction": "NJ",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0094"
+    "team_rule_id": "r-0094",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Eviction for Property Conversion",
@@ -1992,7 +2556,13 @@
     "source_doc_id": "D067",
     "jurisdiction": "NJ",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0095"
+    "team_rule_id": "r-0095",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Eviction for Termination of Employment‑Based Tenancy",
@@ -2013,7 +2583,13 @@
     "source_doc_id": "D067",
     "jurisdiction": "NJ",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0096"
+    "team_rule_id": "r-0096",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Eviction for Conviction of Drug Offense on the Property",
@@ -2034,7 +2610,13 @@
     "source_doc_id": "D067",
     "jurisdiction": "NJ",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0097"
+    "team_rule_id": "r-0097",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Eviction for Conviction of Assault or Threat Against Landlord",
@@ -2055,7 +2637,13 @@
     "source_doc_id": "D067",
     "jurisdiction": "NJ",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0098"
+    "team_rule_id": "r-0098",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Eviction for drug‑related convictions",
@@ -2076,7 +2664,13 @@
     "source_doc_id": "D067",
     "jurisdiction": "NJ",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0099"
+    "team_rule_id": "r-0099",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Eviction for theft convictions",
@@ -2097,7 +2691,13 @@
     "source_doc_id": "D067",
     "jurisdiction": "NJ",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0100"
+    "team_rule_id": "r-0100",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Eviction for human‑trafficking violations",
@@ -2118,7 +2718,13 @@
     "source_doc_id": "D067",
     "jurisdiction": "NJ",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0101"
+    "team_rule_id": "r-0101",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Evictions for owner‑occupied two‑ and three‑family dwellings",
@@ -2139,7 +2745,13 @@
     "source_doc_id": "D067",
     "jurisdiction": "NJ",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0102"
+    "team_rule_id": "r-0102",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Rooming and boarding house eviction requirements",
@@ -2160,7 +2772,13 @@
     "source_doc_id": "D067",
     "jurisdiction": "NJ",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0103"
+    "team_rule_id": "r-0103",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "90‑day notice required before eviction for foreclosure buyer occupancy",
@@ -2181,7 +2799,13 @@
     "source_doc_id": "D067",
     "jurisdiction": "NJ",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0104"
+    "team_rule_id": "r-0104",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   },
   {
     "title": "Prohibition on excessive rent increase as pressure tactic",
@@ -2202,6 +2826,12 @@
     "source_doc_id": "D067",
     "jurisdiction": "NJ",
     "retrieval_date": "2026-10-01T22:37Z",
-    "team_rule_id": "r-0105"
+    "team_rule_id": "r-0105",
+    "compiled_logic": {
+      "exempt_if_built_after_year": null,
+      "exempt_if_built_within_last_years": null,
+      "exempt_if_units_less_than": null,
+      "exempt_if_units_less_than_or_equal_to": null
+    }
   }
 ]
