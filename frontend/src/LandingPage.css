@@ -1,0 +1,476 @@
+/* ============================================================
+   LandingPage.css — NavAIgator Landing Page Styles
+   ============================================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  overflow: hidden;
+}
+
+/* ── Root ── */
+.landing-root {
+  position: relative;
+  width: 100%;
+  height: 100dvh;
+  min-height: 100svh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font, 'Urbanist', sans-serif);
+}
+
+/* ── Background Grid ── */
+.slider-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+  height: 100%;
+}
+
+.city-panel {
+  position: relative;
+  background-color: #111827;
+  overflow: hidden;
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  position: absolute;
+  inset: 0;
+}
+
+.city-divider {
+  position: absolute;
+  width: 1px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.12);
+  z-index: 1;
+}
+.city-divider:nth-child(2) { left: 33.33%; }
+.city-divider:nth-child(4) { left: 66.66%; }
+
+.city-label {
+  position: absolute;
+  bottom: clamp(14px, 2.5vh, 28px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: rgba(255, 255, 255, 0.92);
+  font-size: clamp(9px, 0.9vw, 11px);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 2;
+}
+
+.scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.58) 0%,
+    rgba(0, 0, 0, 0.32) 45%,
+    rgba(0, 0, 0, 0.68) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ── Navbar — Glassmorphic ── */
+.navbar {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 clamp(20px, 4vw, 56px);
+  height: clamp(56px, 7vh, 80px);
+  flex-shrink: 0;
+  /* frosted glass */
+  background: rgba(10, 15, 25, 0.45);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navbar-logo {
+  font-size: clamp(18px, 2vw, 24px);
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: -0.5px;
+}
+
+.lang-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.85);
+  font-size: clamp(12px, 1.1vw, 14px);
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  transition: all 0.2s ease;
+}
+.lang-toggle:hover {
+  background: rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* ── Hero main area ── */
+.hero {
+  position: relative;
+  z-index: 5;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* Shrink padding on smaller screens */
+  padding: clamp(8px, 2vh, 24px) clamp(16px, 3vw, 40px);
+  text-align: center;
+  min-height: 0; /* allow flex child to shrink */
+}
+
+/* Centered column — scales gracefully */
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: min(900px, 96vw);
+  /* Gap shrinks on small screens */
+  gap: clamp(6px, 1.2vh, 14px);
+  /* No negative margin so nothing is cut */
+}
+
+/* ── Hero Title ── */
+.hero-title {
+  font-size: clamp(32px, 5.5vw + 1vh, 88px);
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: -2px;
+  line-height: 1;
+  text-shadow: 0 4px 40px rgba(0, 0, 0, 0.6);
+  flex-shrink: 0;
+}
+
+.teal {
+  color: #00D4AA;
+}
+
+/* ── Tagline ── */
+.hero-tagline {
+  font-size: clamp(13px, 1.6vw, 20px);
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.92);
+  max-width: 680px;
+  line-height: 1.4;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+/* ── Glassmorphic Card ── */
+.hero-card {
+  background: rgba(10, 18, 28, 0.58);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: clamp(18px, 2vw, 28px);
+  padding: clamp(24px, 3.5vh, 44px) clamp(28px, 4vw, 52px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(14px, 2vh, 22px);
+  width: 100%;
+}
+
+/* ── Search Bar ── */
+.search-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 6px 0 18px;
+  border-radius: 50px;
+  height: clamp(48px, 6vh, 64px);
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 4px 28px rgba(0, 0, 0, 0.22);
+}
+
+.search-bar input {
+  flex: 1;
+  background: transparent;
+  color: #1a1a2e;
+  font-size: clamp(13px, 1.2vw, 16px);
+  font-weight: 500;
+  min-width: 0;
+}
+
+.search-bar input::placeholder {
+  color: #9ca3af;
+  font-weight: 400;
+}
+
+.search-icon {
+  color: #9ca3af;
+  flex-shrink: 0;
+}
+
+.search-btn {
+  background: #00D4AA;
+  color: #ffffff;
+  border-radius: 50%;
+  width: clamp(38px, 5vh, 50px);
+  height: clamp(38px, 5vh, 50px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.2s, transform 0.15s;
+}
+.search-btn:hover {
+  background: #00b891;
+  transform: scale(1.06);
+}
+
+/* ── Dropdown ── */
+.dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  background: rgba(12, 16, 28, 0.94);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 16px;
+  overflow: hidden;
+  list-style: none;
+  z-index: 100;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
+}
+
+.dropdown li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 18px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.dropdown li:hover { background: rgba(0, 212, 170, 0.12); color: #00D4AA; }
+.dd-icon { color: #00D4AA; flex-shrink: 0; }
+.dd-empty { color: rgba(255,255,255,0.55) !important; cursor: default !important; font-style: italic; }
+.dd-empty:hover { background: transparent !important; }
+
+/* ── Legal / Trust ── */
+.legal-notice {
+  font-size: clamp(11px, 1vw, 12px);
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  margin-top: 4px;
+}
+
+.trust-line {
+  font-size: clamp(11px, 1vw, 13px);
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 400;
+  margin-bottom: 4px;
+}
+
+/* ── Date Pill ── */
+.date-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 16px;
+  border-radius: 24px;
+  color: rgba(255, 255, 255, 0.95);
+  font-size: clamp(12px, 1.1vw, 14px);
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.13);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  position: relative;
+}
+.date-pill svg { color: #00D4AA; }
+
+.date-input-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.formatted-date {
+  font-weight: 700;
+  pointer-events: none;
+}
+
+.hidden-date-input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+}
+
+/* ── CTA Row ── */
+.cta-row {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 2px;
+}
+
+.btn-primary {
+  background: #00D4AA;
+  color: #ffffff;
+  font-size: clamp(13px, 1.2vw, 15px);
+  font-weight: 700;
+  padding: clamp(10px, 1.4vh, 14px) clamp(20px, 2.5vw, 32px);
+  border-radius: 50px;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  box-shadow: 0 4px 20px rgba(0, 212, 170, 0.38);
+  height: clamp(40px, 5vh, 48px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+.btn-primary:hover {
+  background: #00b891;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0, 212, 170, 0.5);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: clamp(13px, 1.2vw, 15px);
+  font-weight: 700;
+  padding: clamp(10px, 1.4vh, 14px) clamp(20px, 2.5vw, 32px);
+  border-radius: 50px;
+  border: 2px solid rgba(255, 255, 255, 0.38);
+  transition: all 0.2s;
+  height: clamp(40px, 5vh, 48px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+.btn-ghost:hover {
+  border-color: #ffffff;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* ── Stat Chips ── */
+.stat-chips {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 4px;
+}
+.chip {
+  font-size: clamp(11px, 1vw, 13px);
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  padding: 5px 14px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+/* ── Responsive ─ 768px and below ── */
+@media (max-width: 768px) {
+  .slider-bg {
+    grid-template-columns: 1fr;
+  }
+  .city-panel:not(:first-child),
+  .city-divider {
+    display: none;
+  }
+  .hero-content {
+    gap: 10px;
+  }
+  .hero-title {
+    letter-spacing: -1px;
+  }
+  .hero-card {
+    border-radius: 18px;
+    padding: 16px;
+  }
+  .navbar {
+    padding: 0 18px;
+  }
+}
+
+/* ── Extra-tight screens (e.g. 768px tall 14" laptop) ── */
+@media (max-height: 768px) {
+  .hero-title {
+    font-size: clamp(28px, 4.5vh + 2vw, 64px);
+  }
+  .hero-tagline {
+    font-size: clamp(12px, 1.8vh, 17px);
+  }
+  .hero-card {
+    gap: clamp(10px, 1.5vh, 18px);
+    padding: clamp(18px, 2.5vh, 32px) clamp(22px, 3vw, 40px);
+  }
+  .navbar {
+    height: clamp(48px, 7vh, 64px);
+  }
+  .trust-line,
+  .legal-notice {
+    font-size: 11px;
+  }
+  .stat-chips {
+    gap: 6px;
+  }
+  .chip {
+    padding: 4px 12px;
+    font-size: 11px;
+  }
+  .cta-row {
+    gap: 8px;
+  }
+  .btn-primary,
+  .btn-ghost {
+    height: clamp(36px, 4.5vh, 44px);
+    font-size: 13px;
+    padding: 8px 20px;
+  }
+}
