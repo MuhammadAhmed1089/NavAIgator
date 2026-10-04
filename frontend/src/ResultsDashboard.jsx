@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
   MapPin, ArrowLeft, Globe, X, ExternalLink,
   AlertTriangle, CheckCircle, HelpCircle, Clock,
+  ChevronRight, Shield
 } from 'lucide-react';
 import UpcomingChangesMap from './UpcomingChangesMap';
 import './ResultsDashboard.css';
