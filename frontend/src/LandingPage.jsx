@@ -5,10 +5,14 @@ import './LandingPage.css';
 
 const API = 'http://127.0.0.1:8000/api';
 
+import laImg from '../public/img/la.jpg';
+import sfImg from '../public/img/sf.jpg';
+import sdImg from '../public/img/sd.jpg';
+
 const CITIES = [
-  { name: 'Los Angeles', src: '/img/la.jpg' },
-  { name: 'San Francisco', src: '/img/sf.jpg' },
-  { name: 'San Diego', src: '/img/sd.jpg' },
+  { name: 'Los Angeles', src: laImg },
+  { name: 'San Francisco', src: sfImg },
+  { name: 'San Diego', src: sdImg },
 ];
 
 export default function LandingPage({ onSearch }) {
@@ -25,7 +29,7 @@ export default function LandingPage({ onSearch }) {
       .then(r => r.json())
       .then(data => {
         if (Array.isArray(data) && data.length > 0) {
-          setSuggestions(data.slice(0, 50).map(d => ({
+          setSuggestions(data.map(d => ({
             id: d.address_id,
             label: d.street_address,
             state: d.state || '',

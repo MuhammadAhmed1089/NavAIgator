@@ -1,0 +1,164 @@
+.upcoming-map-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: var(--bg-dark);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.map-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.map-header h2 {
+  color: #ffffff;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.map-header p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+.map-wrapper {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  background: radial-gradient(circle at center, var(--bg-card) 0%, var(--bg-dark) 100%);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+}
+
+.us-map {
+  width: 100%;
+  height: 100%;
+}
+
+.marker-dot {
+  cursor: pointer;
+  transition: r 0.2s ease;
+}
+
+.marker-glow {
+  pointer-events: none;
+  animation: pulse-glow 2s infinite ease-in-out;
+}
+
+.marker-dot:hover {
+  r: 10;
+}
+
+@keyframes pulse-glow {
+  0% { transform: scale(0.8); opacity: 0.5; }
+  50% { transform: scale(1.2); opacity: 0.8; }
+  100% { transform: scale(0.8); opacity: 0.5; }
+}
+
+/* Glassmorphic Popover */
+.map-popover {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 320px;
+  background: rgba(18, 24, 43, 0.85); /* deep dark glass */
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 
+              0 0 0 1px rgba(10, 49, 97, 0.5) inset;
+  z-index: 10;
+  animation: fade-in-up 0.3s ease-out;
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translate(-50%, -45%); }
+  to { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+.popover-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.popover-header h3 {
+  color: #ffffff;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: #e5e7eb;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s;
+}
+
+.close-btn:hover {
+  color: #ffffff;
+}
+
+.popover-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.status-pending {
+  color: #ffb84d; /* warning orange */
+  text-transform: capitalize;
+}
+
+.status-not_yet_effective {
+  color: #60a5fa; /* lighter blue for dark popover */
+  text-transform: capitalize;
+}
+
+.popover-body p {
+  color: #e5e7eb;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.affected-count {
+  background: rgba(10, 49, 97, 0.3);
+  border-left: 3px solid #60a5fa;
+  padding: 0.75rem;
+  border-radius: 0 8px 8px 0;
+  color: #ffffff;
+  font-size: 0.9rem;
+}
+
+.affected-count strong {
+  font-size: 1.1rem;
+  color: #60a5fa;
+}

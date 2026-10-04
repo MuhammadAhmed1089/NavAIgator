@@ -5,6 +5,7 @@ import {
   AlertTriangle, CheckCircle, HelpCircle, Clock,
   ChevronRight, Shield
 } from 'lucide-react';
+import UpcomingChangesMap from './UpcomingChangesMap';
 import './ResultsDashboard.css';
 
 const API = 'http://127.0.0.1:8000/api';
@@ -42,13 +43,6 @@ const translateSystemText = (text, isSpanish) => {
   return text;
 };
 
-const CHANGES_MOCK = [
-  { id:'c1', title:'AB 1482 CPI Adjustment 2025–2026', status:'enacted', date:'2025-08-01', jurisdiction:'CA (Statewide)', desc:'New CPI figure sets the maximum rent increase ceiling at 8.2% for the August 2025 – July 2026 period.' },
-  { id:'c2', title:'Los Angeles Tenant Anti-Harassment Ordinance', status:'enacted', date:'2025-01-01', jurisdiction:'Los Angeles, CA', desc:'Expands anti-harassment protections to include unlawful removal of appliances and repeated unnecessary inspections.' },
-  { id:'c3', title:'NJ FAIR Act — Statewide Preemption Ruling (Pending)', status:'pending', date:'TBD', jurisdiction:'New Jersey', desc:'NJ Supreme Court review could preempt local bans in Hoboken and Jersey City. Status unknown; local bans remain effective until ruling.' },
-  { id:'c4', title:'Boston Just-Cause Eviction Proposal', status:'pending', date:'2026 Legislative Session', jurisdiction:'Boston, MA', desc:'Proposed ordinance would require documented just cause for all non-renewal terminations. Has not yet passed city council.' },
-  { id:'c5', title:'Cambridge Rent Stabilization Ordinance', status:'enacted', date:'2023-10-01', jurisdiction:'Cambridge, MA', desc:'Caps rent increases to 10% or the Boston-Cambridge CPI, whichever is lower, for units built before 1995 with 6+ units.' },
-];
 
 /* ─── Audit Modal ───────────────────────────────────────────── */
 function AuditModal({ rule, onClose, isSpanish }) {
@@ -229,34 +223,61 @@ function RuleCard({ item, onClick, isSpanish }) {
 
 /* ─── Changes View ──────────────────────────────────────────── */
 function ChangesView({ asOfDate, isSpanish }) {
+  const [changes, setChanges] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch('http://localhost:8000/api/changes')
+      .then(res => res.json())
+      .then(data => {
+        setChanges(data);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error("Error fetching changes:", err);
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) return <div className="changes-container">Loading...</div>;
+
   return (
-    <div className="changes-container">
-      <div className="changes-title">{isSpanish ? 'Cambios de Ley Próximos y Recientes' : 'Upcoming & Recent Law Changes'}</div>
-      <div className="changes-subtitle">
-        {isSpanish 
-          ? `Leyes promulgadas y propuestas pendientes en 9 ciudades — a partir del ${asOfDate}. Los elementos pendientes aún no son ley y se indican claramente.`
-          : `Enacted laws and pending proposals across all 9 cities — as of ${asOfDate}. Pending items are not yet law and are flagged clearly.`}
+    <div className="changes-container" style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+      <div>
+        <div className="changes-title">{isSpanish ? 'Cambios de Ley Próximos y Recientes (T1-T6)' : 'Upcoming & Recent Law Changes (T1-T6)'}</div>
+        <div className="changes-subtitle">
+          {isSpanish 
+            ? `Leyes promulgadas y propuestas pendientes en 9 ciudades — a partir del ${asOfDate}. Los elementos pendientes aún no son ley y se indican claramente.`
+            : `Live Change Tracking results evaluating all 500 addresses against upcoming rules.`}
+        </div>
+
+        <div style={{ margin: '2rem 0', width: '100%' }}>
+          <UpcomingChangesMap />
+        </div>
+
+        <div className="changes-list">
+          {changes.map((c, i) => (
+            <motion.div
+              key={c.id}
+              className={`change-card ${c.status}`}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.06 }}
+            >
+              <div className="change-card-row">
+                <div>
+                  <div className="change-card-title">{c.id}: {c.title}</div>
+                  <div style={{ fontSize:11, color:'#9ca3af', marginBottom:6, fontWeight:700 }}>{c.jurisdiction}</div>
+                  <div className="change-card-desc">{c.desc}</div>
+                </div>
+                <span className={`change-card-date ${c.status}`}>
+                  {c.status === 'enacted' ? (isSpanish ? '✓ Promulgada' : '✓ Enacted') : (isSpanish ? '⏳ Pendiente' : '⏳ Pending')} — {c.date}
+                </span>
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
-      {CHANGES_MOCK.map((c, i) => (
-        <motion.div
-          key={c.id}
-          className={`change-card ${c.status}`}
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: i * 0.06 }}
-        >
-          <div className="change-card-row">
-            <div>
-              <div className="change-card-title">{c.title}</div>
-              <div style={{ fontSize:11, color:'#9ca3af', marginBottom:6, fontWeight:700 }}>{c.jurisdiction}</div>
-              <div className="change-card-desc">{c.desc}</div>
-            </div>
-            <span className={`change-card-date ${c.status}`}>
-              {c.status === 'enacted' ? (isSpanish ? '✓ Promulgada' : '✓ Enacted') : (isSpanish ? '⏳ Pendiente' : '⏳ Pending')} — {c.date}
-            </span>
-          </div>
-        </motion.div>
-      ))}
     </div>
   );
 }
@@ -270,13 +291,19 @@ export default function ResultsDashboard({ selection, onBack }) {
   const [isSpanish, setIsSpanish] = useState(false);
   const [yearBuilt, setYearBuilt] = useState('');
   const [units, setUnits]         = useState('');
+  const [asOfDate, setAsOfDate]   = useState(selection?.asOfDate || '2026-10-01');
   const isChangesView             = selection?.view === 'changes';
 
   const fetchData = useCallback(async () => {
     if (isChangesView || !selection?.id) { setLoading(false); return; }
     setLoading(true); setError(null);
     try {
-      const res = await fetch(`${API}/lookup/${selection.id}`);
+      let url = `${API}/lookup/${selection.id}?`;
+      if (yearBuilt) url += `year_built=${yearBuilt}&`;
+      if (units) url += `units=${units}&`;
+      if (asOfDate) url += `as_of=${asOfDate}`;
+
+      const res = await fetch(url);
       if (!res.ok) throw new Error(`Server returned ${res.status}`);
       setData(await res.json());
     } catch (e) {
@@ -284,7 +311,7 @@ export default function ResultsDashboard({ selection, onBack }) {
     } finally {
       setLoading(false);
     }
-  }, [selection?.id, isChangesView]);
+  }, [selection?.id, isChangesView, yearBuilt, units, asOfDate]);
 
   useEffect(() => { fetchData(); }, [fetchData]);
 
@@ -374,6 +401,15 @@ export default function ResultsDashboard({ selection, onBack }) {
                         onChange={e => setUnits(e.target.value)}
                       />
                   }
+                </div>
+                <div className="sidebar-fact-row">
+                  <span className="sidebar-fact-key">{isSpanish ? 'Fecha Efectiva' : 'As Of Date'}</span>
+                  <input
+                    className="sidebar-fact-input"
+                    type="date"
+                    value={asOfDate}
+                    onChange={e => setAsOfDate(e.target.value)}
+                  />
                 </div>
                 <div className="sidebar-fact-row">
                   <span className="sidebar-fact-key">{isSpanish ? 'Estado' : 'State'}</span>

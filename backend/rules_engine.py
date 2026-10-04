@@ -11,7 +11,7 @@ address-level answers.
 
 import json
 from pathlib import Path
-from datetime import datetime
+from datetime import date, datetime
 
 ROOT = Path(__file__).parent
 RULES_PATH = ROOT / "rules.json"
@@ -27,23 +27,38 @@ def load_data():
     return rules, addresses
 
 
+def _parse_effective_date(eff_date_str: str):
+    """Parse an effective_date string in YYYY-MM-DD, YYYY-MM, or YYYY format."""
+    if not eff_date_str:
+        return None
+    for fmt in ("%Y-%m-%d", "%Y-%m", "%Y"):
+        try:
+            return datetime.strptime(str(eff_date_str).strip(), fmt).date()
+        except ValueError:
+            continue
+    return None
+
+
 def evaluate_coverage(rule: dict, address: dict, query_year: int) -> dict:
     """
     Evaluates if a rule's coverage conditions are met by the building's facts.
     Returns a dict with 'status' (applies, exempt, unknown, not_yet_effective, pending, failed)
     and an optional 'reason'.
+
+    query_year: the year of the 'as-of' date being evaluated (e.g. 2025, 2026, 2027).
     """
     status = rule.get("status", "in_force").lower()
-    
+
     # Fast path for non-enacted rules
     if status == "pending":
         return {"status": "pending", "reason": "Bill is still pending legislature."}
     if status == "failed":
         return {"status": "failed", "reason": "Proposed law failed to pass."}
-    
-    # Check effective date if available (simple string match for our prototype)
-    eff_date = str(rule.get("effective_date", ""))
-    if eff_date and eff_date > "2026-10-01":
+
+    # Check effective date against the query date (use Jan 1 of query_year as the reference point)
+    query_date = date(query_year, 1, 1)
+    eff_date = _parse_effective_date(rule.get("effective_date"))
+    if eff_date and eff_date > query_date:
         return {"status": "not_yet_effective", "reason": f"Takes effect on {eff_date}"}
 
     coverage = str(rule.get("coverage_conditions", "")).lower()
@@ -134,48 +149,69 @@ def run_engine():
     
     lookups = []
     
-    for aid, addr in addresses.items():
-        state_code = addr.get("jurisdiction_state")
-        city_code = addr.get("jurisdiction_city")
-        
-        addr_result = {
-            "address_id": aid,
-            "street_address": addr.get("street_address"),
-            "legal_city": addr.get("legal_city"),
-            "state": state_code,
-            "match_status": addr.get("match_status"),
-            "as_of_date": query_date,
-            "rules_by_category": {
-                "rent_increase_limits": [],
-                "just_cause_eviction": [],
-                "security_deposits": [],
-                "application_screening_fees": [],
-                "screening_restrictions": [],
-                "algorithmic_rent_setting": []
-            }
+def evaluate_address(aid: str, addr: dict, rules: list, query_year: int) -> dict:
+    """Evaluates all rules for a single address and returns the complete lookup dict."""
+    state_code = addr.get("jurisdiction_state")
+    city_code = addr.get("jurisdiction_city")
+    
+    addr_result = {
+        "address_id": aid,
+        "street_address": addr.get("street_address"),
+        "legal_city": addr.get("legal_city"),
+        "state": state_code,
+        "match_status": addr.get("match_status"),
+        "as_of_date": f"{query_year}-01-01",
+        "rules_by_category": {
+            "rent_increase_limits": [],
+            "just_cause_eviction": [],
+            "security_deposits": [],
+            "application_screening_fees": [],
+            "screening_restrictions": [],
+            "algorithmic_rent_setting": []
         }
+    }
 
-        # Filter rules by Jurisdiction Stack (State OR exact City)
-        for rule in rules:
-            rule_jur = str(rule.get("jurisdiction", "")).strip()
+    # Filter rules by Jurisdiction Stack (State OR exact City)
+    for rule in rules:
+        rule_jur = str(rule.get("jurisdiction", "")).strip()
+        
+        # JURISDICTION ALIASING FIX (ISSUE-06): Handle San Francisco variations
+        aliases = [rule_jur]
+        if rule_jur in ("San Francisco", "San Francisco, CA", "City and County of San Francisco"):
+            aliases = ["San Francisco, CA", "San Francisco", "City and County of San Francisco"]
+        
+        if state_code in aliases or city_code in aliases:
+            # Evaluate Coverage
+            evaluation = evaluate_coverage(rule, addr, query_year)
             
-            if rule_jur == state_code or rule_jur == city_code:
-                # Evaluate Coverage
-                evaluation = evaluate_coverage(rule, addr, query_year)
-                
-                cat = rule.get("category")
-                if cat in addr_result["rules_by_category"]:
-                    addr_result["rules_by_category"][cat].append({
-                        "status": evaluation["status"],
-                        "reason": evaluation["reason"],
-                        "conflict_flag": False,
-                        "conflict_note": None,
-                        "rule": rule
-                    })
-        
-        # Apply State vs City override logic
-        flag_precedence_conflicts(addr_result["rules_by_category"])
-        
+            cat = rule.get("category")
+            if cat in addr_result["rules_by_category"]:
+                addr_result["rules_by_category"][cat].append({
+                    "status": evaluation["status"],
+                    "reason": evaluation["reason"],
+                    "conflict_flag": False,
+                    "conflict_note": None,
+                    "rule": rule
+                })
+    
+    # Apply State vs City override logic
+    flag_precedence_conflicts(addr_result["rules_by_category"])
+    
+    return addr_result
+
+def run_engine():
+    print("Loading rules and geocoded addresses...")
+    rules, addresses = load_data()
+    print(f"Loaded {len(rules)} rules and {len(addresses)} addresses.")
+    
+    query_date = "2026-10-01"
+    query_year = int(query_date.split("-")[0])
+    
+    lookups = []
+    
+    for aid, addr in addresses.items():
+        addr_result = evaluate_address(aid, addr, rules, query_year)
+        addr_result["as_of_date"] = query_date
         lookups.append(addr_result)
 
     with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
