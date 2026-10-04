@@ -1,0 +1,53 @@
+/* ============================================================
+   NavAIgator — Global Design System
+   Font: Urbanist (Gilroy-equivalent, Google Fonts)
+   Colors: Teal #00D4AA, White, Dark charcoal overlays
+   ============================================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --teal: #00D4AA;
+  --teal-dark: #00b891;
+  --white: #ffffff;
+  --white-80: rgba(255,255,255,0.80);
+  --white-60: rgba(255,255,255,0.60);
+  --white-30: rgba(255,255,255,0.30);
+  --white-15: rgba(255,255,255,0.15);
+  --white-10: rgba(255,255,255,0.10);
+  --scrim: rgba(0,0,0,0.38);
+  --font: 'Urbanist', sans-serif;
+
+  /* Status colors */
+  --green: #22c55e;
+  --yellow: #f59e0b;
+  --blue: #3b82f6;
+  --red: #ef4444;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-700: #374151;
+  --gray-900: #111827;
+}
+
+html, body, #root {
+  height: 100%;
+  font-family: var(--font);
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  font-family: var(--font);
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+input {
+  font-family: var(--font);
+  outline: none;
+  border: none;
+}
