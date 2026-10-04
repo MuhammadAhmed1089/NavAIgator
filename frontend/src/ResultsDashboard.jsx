@@ -377,30 +377,24 @@ export default function ResultsDashboard({ selection, onBack }) {
                 {/* Year Built */}
                 <div className="sidebar-fact-row">
                   <span className="sidebar-fact-key">{isSpanish ? 'Año de Constr.' : 'Year Built'}</span>
-                  {yearBuilt
-                    ? <span className="sidebar-fact-val">{yearBuilt}</span>
-                    : <input
-                        className="sidebar-fact-input"
-                        type="number"
-                        placeholder={isSpanish ? 'Desc.' : 'Unknown'}
-                        value={yearBuilt}
-                        onChange={e => setYearBuilt(e.target.value)}
-                      />
-                  }
+                  <input
+                    className="sidebar-fact-input"
+                    type="number"
+                    placeholder={data?.year_built || (isSpanish ? 'Desc.' : 'Unknown')}
+                    value={yearBuilt}
+                    onChange={e => setYearBuilt(e.target.value)}
+                  />
                 </div>
                 {/* Units */}
                 <div className="sidebar-fact-row">
                   <span className="sidebar-fact-key">{isSpanish ? 'Unidades' : 'Units'}</span>
-                  {units
-                    ? <span className="sidebar-fact-val">{units}</span>
-                    : <input
-                        className="sidebar-fact-input"
-                        type="number"
-                        placeholder={isSpanish ? 'Desc.' : 'Unknown'}
-                        value={units}
-                        onChange={e => setUnits(e.target.value)}
-                      />
-                  }
+                  <input
+                    className="sidebar-fact-input"
+                    type="number"
+                    placeholder={data?.units || (isSpanish ? 'Desc.' : 'Unknown')}
+                    value={units}
+                    onChange={e => setUnits(e.target.value)}
+                  />
                 </div>
                 <div className="sidebar-fact-row">
                   <span className="sidebar-fact-key">{isSpanish ? 'Fecha Efectiva' : 'As Of Date'}</span>
