@@ -20,8 +20,8 @@ app = FastAPI(title="Rental Housing Law Navigator API")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origin_regex=r"https://([a-z0-9]+--)?navaiusa\.netlify\.app",
-    allow_credentials=False,
+    allow_origins=["*"],
+    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
