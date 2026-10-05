@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
   MapPin, ArrowLeft, Globe, X, ExternalLink,
   AlertTriangle, CheckCircle, HelpCircle, Clock,
-  ChevronRight, Shield
+  ChevronRight, Shield, Zap, FileText, Loader
 } from 'lucide-react';
 import UpcomingChangesMap from './UpcomingChangesMap';
 import './ResultsDashboard.css';
@@ -282,6 +282,118 @@ function ChangesView({ asOfDate, isSpanish }) {
   );
 }
 
+/* ─── Live Ingest Panel ─────────────────────────────────────── */
+function LiveIngestPanel({ jurisdiction, state, onIngested, isSpanish }) {
+  const [url, setUrl]           = useState('');
+  const [text, setText]         = useState('');
+  const [status, setStatus]     = useState('idle'); // idle | loading | success | error
+  const [result, setResult]     = useState(null);
+  const [errMsg, setErrMsg]     = useState('');
+
+  const handleIngest = async () => {
+    if (!text.trim() && !url.trim()) return;
+    setStatus('loading'); setErrMsg('');
+    try {
+      const res = await fetch(`${API}/ingest-live`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          url: url.trim() || 'https://user-provided-text',
+          jurisdiction: state || jurisdiction,
+          text_content: text.trim() || `Law text for ${jurisdiction}`
+        })
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.detail || 'Ingest failed');
+      setResult(data);
+      setStatus('success');
+      setTimeout(() => onIngested(), 1500);
+    } catch (e) {
+      setErrMsg(e.message);
+      setStatus('error');
+    }
+  };
+
+  return (
+    <motion.div
+      className="live-ingest-panel"
+      initial={{ opacity: 0, y: 24 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4 }}
+    >
+      <div className="live-ingest-header">
+        <Zap size={18} style={{ color: '#00D4AA' }} />
+        <div>
+          <div className="live-ingest-title">
+            {isSpanish ? 'No hay leyes registradas para' : 'No laws on record for'} <span style={{ color: '#00D4AA' }}>{state || jurisdiction}</span>
+          </div>
+          <div className="live-ingest-subtitle">
+            {isSpanish
+              ? 'Pega el texto de una ley de vivienda local para analizarla y cargarla en tiempo real.'
+              : 'Paste any local housing law text below to extract and load its rules instantly.'}
+          </div>
+        </div>
+      </div>
+
+      <div className="live-ingest-form">
+        <div className="live-ingest-field">
+          <label className="live-ingest-label">
+            <FileText size={13} /> {isSpanish ? 'URL fuente (opcional)' : 'Source URL (optional)'}
+          </label>
+          <input
+            className="live-ingest-input"
+            type="text"
+            placeholder="https://legislature.state.tx.us/..."
+            value={url}
+            onChange={e => setUrl(e.target.value)}
+          />
+        </div>
+
+        <div className="live-ingest-field">
+          <label className="live-ingest-label">
+            <FileText size={13} /> {isSpanish ? 'Texto legal' : 'Legal text'} <span style={{ color: '#ef4444' }}>*</span>
+          </label>
+          <textarea
+            className="live-ingest-textarea"
+            placeholder={isSpanish
+              ? 'Pega aquí el texto de la ley (p. ej., límites de depósito, causa justa para desalojo...)'
+              : 'Paste the law text here (e.g. security deposit limits, just-cause eviction rules...)'}
+            value={text}
+            onChange={e => setText(e.target.value)}
+            rows={6}
+          />
+        </div>
+
+        {errMsg && (
+          <div className="live-ingest-error">
+            <AlertTriangle size={13} /> {errMsg}
+          </div>
+        )}
+
+        {status === 'success' && result && (
+          <div className="live-ingest-success">
+            <CheckCircle size={14} />
+            {isSpanish
+              ? `¡Éxito! ${result.extracted_rules?.length || 0} reglas extraídas. Recargando...`
+              : `Success! ${result.extracted_rules?.length || 0} rules extracted. Reloading results...`}
+          </div>
+        )}
+
+        <button
+          className="live-ingest-btn"
+          onClick={handleIngest}
+          disabled={status === 'loading' || status === 'success' || !text.trim()}
+        >
+          {status === 'loading'
+            ? <><Loader size={14} className="spin" /> {isSpanish ? 'Analizando con IA...' : 'Extracting with AI...'}</>
+            : <><Zap size={14} /> {isSpanish ? 'Cargar leyes en vivo' : 'Ingest Laws Live'}</>
+          }
+        </button>
+      </div>
+    </motion.div>
+  );
+}
+
 /* ─── Main Dashboard ────────────────────────────────────────── */
 export default function ResultsDashboard({ selection, onBack }) {
   const [data, setData]           = useState(null);
@@ -293,6 +405,7 @@ export default function ResultsDashboard({ selection, onBack }) {
   const [units, setUnits]         = useState('');
   const [asOfDate, setAsOfDate]   = useState(selection?.asOfDate || '2026-10-01');
   const isChangesView             = selection?.view === 'changes';
+  const [ingestKey, setIngestKey] = useState(0);
 
   const fetchData = useCallback(async () => {
     if (isChangesView || !selection?.id) { setLoading(false); return; }
@@ -323,6 +436,11 @@ export default function ResultsDashboard({ selection, onBack }) {
       if (k in summaryCounts) summaryCounts[k]++;
     });
   }
+
+  /* Detect empty results — all categories have 0 rules */
+  const totalRules = data?.rules_by_category
+    ? Object.values(data.rules_by_category).flat().length
+    : -1;
 
   const displayAddress = selection?.label || data?.street_address || '—';
   const displayDate    = selection?.asOfDate || data?.as_of_date || '—';
@@ -469,20 +587,30 @@ export default function ResultsDashboard({ selection, onBack }) {
                 onClick={fetchData}
               >{isSpanish ? 'Reintentar' : 'Retry'}</button>
             </div>
-          ) : data?.rules_by_category ? (
+          ) : data?.rules_by_category && totalRules > 0 ? (
             Object.entries(data.rules_by_category).map(([cat, items]) => (
-              <motion.div key={cat} className="category-group"
-                initial={{ opacity:0 }} animate={{ opacity:1 }} transition={{ duration:0.3 }}>
-                <div className="category-title">
-                  {getCategoryLabel(cat, isSpanish)}
-                </div>
-                <div className="rules-grid">
-                  {items.map((item, i) => (
-                    <RuleCard key={`${item.rule.team_rule_id || i}`} item={item} onClick={setActiveRule} isSpanish={isSpanish} />
-                  ))}
-                </div>
-              </motion.div>
+              items.length > 0 && (
+                <motion.div key={cat} className="category-group"
+                  initial={{ opacity:0 }} animate={{ opacity:1 }} transition={{ duration:0.3 }}>
+                  <div className="category-title">
+                    {getCategoryLabel(cat, isSpanish)}
+                  </div>
+                  <div className="rules-grid">
+                    {items.map((item, i) => (
+                      <RuleCard key={`${item.rule.team_rule_id || i}`} item={item} onClick={setActiveRule} isSpanish={isSpanish} />
+                    ))}
+                  </div>
+                </motion.div>
+              )
             ))
+          ) : data?.rules_by_category && totalRules === 0 ? (
+            <LiveIngestPanel
+              key={ingestKey}
+              jurisdiction={displayAddress}
+              state={data?.state || selection?.state || ''}
+              isSpanish={isSpanish}
+              onIngested={() => { setIngestKey(k => k + 1); fetchData(); }}
+            />
           ) : (
             <div className="results-error">
               <h3>{isSpanish ? 'No se encontraron reglas' : 'No rules found'}</h3>
