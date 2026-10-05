@@ -122,10 +122,27 @@ export default function LandingPage({ onSearch }) {
                   value={query}
                   onChange={e => { setQuery(e.target.value); setShowDrop(true); }}
                   onFocus={() => setShowDrop(true)}
+                  onKeyDown={e => {
+                    if (e.key === 'Enter' && query.trim()) {
+                      if (filtered[0] && filtered[0].label.toLowerCase() === query.trim().toLowerCase()) {
+                        handleSelect(filtered[0]);
+                      } else {
+                        handleSelect({ id: query.trim(), label: query.trim(), state: 'Unknown' });
+                      }
+                    }
+                  }}
                 />
                 <button 
                   className="search-btn"
-                  onClick={() => { if (filtered[0]) handleSelect(filtered[0]); }}
+                  onClick={() => {
+                    if (query.trim()) {
+                      if (filtered[0] && filtered[0].label.toLowerCase() === query.trim().toLowerCase()) {
+                        handleSelect(filtered[0]);
+                      } else {
+                        handleSelect({ id: query.trim(), label: query.trim(), state: 'Unknown' });
+                      }
+                    }
+                  }}
                 >
                   <Search size={18} />
                 </button>

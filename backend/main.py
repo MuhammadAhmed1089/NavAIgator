@@ -78,10 +78,26 @@ def get_addresses():
 def get_lookup(address_id: str, as_of: str = None, year_built: int = None, units: int = None):
     """Returns the full rule evaluation for a specific address. Supports dynamic query overrides."""
     if address_id not in _global_addresses_raw:
-        raise HTTPException(status_code=404, detail="Address not found")
+        import re
+        state_match = re.search(r'\b([A-Z]{2})\b', address_id.upper())
+        state_code = state_match.group(1) if state_match else "Unknown"
         
-    # Otherwise, run dynamic evaluation
-    addr_data = dict(_global_addresses_raw[address_id]) # copy
+        city = "Unknown"
+        if "," in address_id:
+            parts = [p.strip() for p in address_id.split(",")]
+            if len(parts) >= 2:
+                city = parts[-2]
+                
+        addr_data = {
+            "street_address": address_id,
+            "legal_city": city,
+            "jurisdiction_state": state_code,
+            "jurisdiction_city": f"{city}, {state_code}",
+            "match_status": "custom_search"
+        }
+    else:
+        addr_data = dict(_global_addresses_raw[address_id]) # copy
+        
     if year_built is not None:
         addr_data["year_built"] = year_built
     if units is not None:
