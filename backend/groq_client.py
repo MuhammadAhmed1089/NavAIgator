@@ -39,7 +39,7 @@ def _load_keys() -> list[str]:
 print("GROQ vars seen:", sorted(k for k in os.environ if "GROQ" in k.upper()), flush=True)
 
 _KEYS = _load_keys()
-_MODEL = os.getenv("GROQ_MODEL", "llama3-8b-8192")
+_MODEL = os.getenv("GROQ_MODEL", "llama-3.3-70b-versatile")
 _MAX_RETRIES = int(os.getenv("GROQ_MAX_RETRIES", "3"))
 _RETRY_DELAY = float(os.getenv("GROQ_RETRY_DELAY_SECONDS", "2"))
 
