@@ -103,8 +103,8 @@ def get_lookup(address_id: str, as_of: str = None, year_built: int = None, units
             if state_code and len(state_code) == 2:
                 state_code = state_code.upper()
                 
-        except Exception:
-            city = "Unknown"
+        except Exception as e:
+            city = f"Error: {e}"
             state_code = "Unknown"
             
         addr_data = {
