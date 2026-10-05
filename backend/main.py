@@ -78,22 +78,41 @@ def get_addresses():
 def get_lookup(address_id: str, as_of: str = None, year_built: int = None, units: int = None):
     """Returns the full rule evaluation for a specific address. Supports dynamic query overrides."""
     if address_id not in _global_addresses_raw:
-        import re
-        state_match = re.search(r'\b([A-Z]{2})\b', address_id.upper())
-        state_code = state_match.group(1) if state_match else "Unknown"
-        
-        city = "Unknown"
-        if "," in address_id:
-            parts = [p.strip() for p in address_id.split(",")]
-            if len(parts) >= 2:
-                city = parts[-2]
+        try:
+            import json
+            from groq_client import chat_complete
+            
+            prompt = (
+                "You are an address parser. Extract the city and the 2-letter state abbreviation "
+                "from the provided address. Return ONLY a JSON object with 'city' and 'state' keys. "
+                "If you cannot determine them, use 'Unknown'."
+            )
+            
+            response = chat_complete(
+                messages=[
+                    {"role": "system", "content": prompt},
+                    {"role": "user", "content": address_id}
+                ],
+                response_format={"type": "json_object"},
+                temperature=0.0
+            )
+            
+            parsed = json.loads(response)
+            city = parsed.get("city", "Unknown")
+            state_code = parsed.get("state", "Unknown")
+            if state_code and len(state_code) == 2:
+                state_code = state_code.upper()
                 
+        except Exception:
+            city = "Unknown"
+            state_code = "Unknown"
+            
         addr_data = {
             "street_address": address_id,
             "legal_city": city,
             "jurisdiction_state": state_code,
             "jurisdiction_city": f"{city}, {state_code}",
-            "match_status": "custom_search"
+            "match_status": "custom_search_llm"
         }
     else:
         addr_data = dict(_global_addresses_raw[address_id]) # copy
